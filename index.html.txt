@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Just For You, Isha ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      background: #fff;
+      padding: 25px;
+      max-width: 480px;
+      width: 92%;
+      border-radius: 22px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+      text-align: center;
+      z-index: 2;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      color: #ff4b6e;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .music-btn {
+      background: #ff4b6e;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .shayari {
+      background: #fff5f7;
+      border-left: 4px solid #ff4b6e;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin: 16px 0;
+    }
+
+    button {
+      padding: 7px 16px;
+      margin: 5px;
+      border-radius: 20px;
+      border: none;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: #ff4b6e;
+      color: #fff;
+    }
+
+    .no {
+      background: #ddd;
+    }
+
+    .message {
+      font-size: 13px;
+      margin-top: 6px;
+      color: #555;
+      min-height: 18px;
+    }
+
+    .final-note {
+      background: #fdf0f4;
+      margin-top: 22px;
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_8b0a56d08c.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Isha ❤️</h1>
+    <div class="subtitle">I made this quietly… just for you ✨</div>
+
+    <button class="music-btn" onclick="playMusic()">Play music 🎶</button>
+
+    <div class="shayari">
+      Tere hon toh vi farak painda ae 💫<br>
+      Te tere na hon toh vi farak painda ae<br>
+      Hun tu ehnu meri bebasi na samjhi<br>
+      Tere naal ishq ae… farak tah painda ae ❤️
+    </div>
+
+    <div class="question">
+      <p>Do you like me?</p>
+      <button class="yes" onclick="reply(this,'That means more than you know 🥰')">Yes</button>
+      <button class="no" onclick="reply(this,'Thank you for your honesty. I respect it 🤍')">No</button>
+      <div class="message"></div>
+    </div>
+
+    <div class="question">
+      <p>Will you take me into 2026?</p>
+      <button class="yes" onclick="reply(this,'Step by step… I’d love that ✨')">Yes</button>
+      <button class="no" onclick="reply(this,'I’ll still wish you happiness 🌼')">No</button>
+      <div class="message"></div>
+    </div>
+
+    <div class="final-note">
+      Isha, this isn’t pressure or expectation — just a feeling.<br>
+      Soft, genuine, and real.<br>
+      No promises… only respect, effort,<br>
+      and a small place in my heart that feels like you ❤️
+    </div>
+  </div>
+
+  <script>
+    function reply(btn, text) {
+      btn.parentElement.querySelector('.message').innerText = text;
+    }
+
+    function playMusic() {
+      document.getElementById('bgMusic').play();
+    }
+
+    // create floating hearts
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 7000);
+    }, 500);
+  </script>
+
+</body>
+</html>
